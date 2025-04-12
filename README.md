@@ -1,66 +1,123 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Simulador de Processamento com Laravel Reverb
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Este projeto Laravel é uma prova de conceito para demonstrar o uso do **Laravel Reverb** como servidor WebSocket, permitindo comunicação em tempo real. Ele simula o processamento de arquivos, com um fluxo onde os usuários podem escolher entre autenticação ou uso anônimo antes de interagir com a simulação. A aplicação utiliza **Livewire Volt** para componentes interativos, **Tailwind CSS** com **Vite** para a interface, e **Laravel Sail** para um ambiente de desenvolvimento baseado em Docker. Filas são usadas para processamento assíncrono, complementando a experiência em tempo real.
 
-## About Laravel
+## Funcionalidades
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+-   Escolha inicial entre autenticação (login/registro) ou modo anônimo.
+-   Formulário de registro de usuários com validação segura.
+-   Simulação de processamento de arquivos com feedback em tempo real via WebSockets (Reverb).
+-   Processamento assíncrono de tarefas com filas.
+-   Interface dinâmica construída com Livewire Volt e estilizada com Tailwind CSS.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Objetivo
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+O objetivo principal é demonstrar:
 
-## Learning Laravel
+-   A configuração e uso do **Laravel Reverb** para comunicação bidirecional em tempo real.
+-   Integração de WebSockets com eventos e broadcasting no Laravel.
+-   Um fluxo de autenticação combinado com uma simulação interativa de processamento.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Pré-requisitos
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Para rodar o projeto, você precisa das seguintes ferramentas:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+-   [Docker Desktop](https://www.docker.com/products/docker-desktop/) (necessário para o Laravel Sail).
+-   [Git](https://git-scm.com/) (para clonar o repositório).
+-   [Composer](https://getcomposer.org/) (opcional, para gerenciamento local de dependências PHP).
+-   [Node.js](https://nodejs.org/) (opcional, necessário apenas se rodar `npm` fora do Sail).
 
-## Laravel Sponsors
+## Instalação
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Siga os passos abaixo para configurar e rodar o projeto localmente:
 
-### Premium Partners
+1. **Clone o repositório**:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+    ```bash
+    https://github.com/lucasrgoncalves/laravel-reverb
+    cd laravel-reverb
+    ```
 
-## Contributing
+2. **Configure o arquivo .env**:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+    ```bash
+    cp .env.example .env
+    ```
 
-## Code of Conduct
+    Ajuste as configurações necessárias no arquivo `.env`, especialmente as relacionadas ao banco de dados e ao Reverb:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+    ```
+    DB_CONNECTION=mysql
+    DB_HOST=mysql
+    DB_PORT=3306
+    DB_DATABASE=laravel_reverb
+    DB_USERNAME=sail
+    DB_PASSWORD=password
 
-## Security Vulnerabilities
+    REVERB_APP_ID=app-id
+    REVERB_APP_KEY=app-key
+    REVERB_HOST=127.0.0.1
+    REVERB_PORT=8080
+    ```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+````markdown
+3. **Instale as dependências e em seguida execute o Sail**:
 
-## License
+    ```bash
+    # Instalar os pacotes do composer e do npm
+    composer install && npm install
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+    # Iniciar Sail e subir os containers
+    ./vendor/bin/sail build && ./vendor/bin/sail up -d
+
+    ```
+
+4. **Gere a chave da aplicação**:
+    ```bash
+    ./vendor/bin/sail artisan key:generate
+    ```
+````
+
+5. **Execute as migrações**:
+    ```bash
+    ./vendor/bin/sail artisan migrate
+    ```
+
+## Executando o projeto
+
+Para que a aplicação funcione corretamente, você precisa executar vários serviços simultaneamente.:
+
+1. **Compilar assets (frontend)**:
+
+    ```bash
+    ./vendor/bin/sail npm run dev
+    ```
+
+2. **Iniciar o servidor Reverb**:
+
+    ```bash
+    ./vendor/bin/sail artisan reverb:start
+    ```
+
+3. **Iniciar o processamento de filas**:
+    ```bash
+    ./vendor/bin/sail artisan queue:listen
+    ```
+
+## Acessando a aplicação
+
+Após executar todos os serviços acima:
+
+1. Acesse a aplicação em seu navegador:
+
+    - **URL:** [http://localhost](http://localhost)
+
+2. Na tela inicial, você poderá escolher entre:
+
+    - Acessar com login (criando uma conta ou usando uma existente)
+    - Continuar como visitante (anônimo)
+
+3. Após acessar, você verá a interface do simulador de processamento de arquivo:
+    - Clique no botão "Processar Arquivo" para iniciar uma simulação
+    - Observe as atualizações em tempo real via WebSockets
+    - Veja as diferentes experiências entre usuários autenticados (canais privados) e anônimos (canais públicos).
