@@ -34,7 +34,7 @@ Siga os passos abaixo para configurar e rodar o projeto localmente:
 1. **Clone o repositório**:
 
     ```bash
-    https://github.com/lucasrgoncalves/laravel-reverb && cd laravel-reverb
+    git clone https://github.com/lucasrgoncalves/laravel-reverb && cd laravel-reverb
     ```
 
 2. **Configure o arquivo .env**:
