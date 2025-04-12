@@ -34,8 +34,7 @@ Siga os passos abaixo para configurar e rodar o projeto localmente:
 1. **Clone o repositório**:
 
     ```bash
-    https://github.com/lucasrgoncalves/laravel-reverb
-    cd laravel-reverb
+    https://github.com/lucasrgoncalves/laravel-reverb && cd laravel-reverb
     ```
 
 2. **Configure o arquivo .env**:
@@ -60,7 +59,6 @@ Siga os passos abaixo para configurar e rodar o projeto localmente:
     REVERB_PORT=8080
     ```
 
-````markdown
 3. **Instale as dependências e em seguida execute o Sail**:
 
     ```bash
@@ -76,6 +74,7 @@ Siga os passos abaixo para configurar e rodar o projeto localmente:
     ```bash
     ./vendor/bin/sail artisan key:generate
     ```
+
 ````
 
 5. **Execute as migrações**:
@@ -121,3 +120,4 @@ Após executar todos os serviços acima:
     - Clique no botão "Processar Arquivo" para iniciar uma simulação
     - Observe as atualizações em tempo real via WebSockets
     - Veja as diferentes experiências entre usuários autenticados (canais privados) e anônimos (canais públicos).
+````
