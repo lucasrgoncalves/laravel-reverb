@@ -119,7 +119,3 @@ Após executar todos os serviços acima:
     - Clique no botão "Processar Arquivo" para iniciar uma simulação
     - Observe as atualizações em tempo real via WebSockets
     - Veja as diferentes experiências entre usuários autenticados (canais privados) e anônimos (canais públicos).
-
-```
-
-```
