@@ -71,11 +71,10 @@ Siga os passos abaixo para configurar e rodar o projeto localmente:
     ```
 
 4. **Gere a chave da aplicação**:
+
     ```bash
     ./vendor/bin/sail artisan key:generate
     ```
-
-````
 
 5. **Execute as migrações**:
     ```bash
@@ -120,4 +119,7 @@ Após executar todos os serviços acima:
     - Clique no botão "Processar Arquivo" para iniciar uma simulação
     - Observe as atualizações em tempo real via WebSockets
     - Veja as diferentes experiências entre usuários autenticados (canais privados) e anônimos (canais públicos).
-````
+
+```
+
+```
